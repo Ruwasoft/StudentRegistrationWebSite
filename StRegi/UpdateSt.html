@@ -1,0 +1,171 @@
+<html>
+
+<head>
+	<style type="text/css">
+		.{
+			margin:0px;
+			padding:0px;
+			font-family:sans-serif;
+		}
+		
+		#sidebar{
+			position:fixed;
+			width:200px;
+			height:100%;
+			background:#151719;
+			left:0px;
+			transition: all 500ms linear;
+		}
+		
+		#sidebar.active{
+			left:-200px;
+			
+		}
+		#sidebar ul li a{
+			color:rgba(230,230,230,0.9);
+			list-style:none;
+			padding:15px 10px;
+			border-bottom:1px solid rgba(100,100,100,0.3);
+		}
+		
+		#sidebar ul li{
+			color:rgba(230,230,230,0.9);
+			list-style:none;
+			padding:15px 10px;
+			border-bottom:1px solid rgba(100,100,100,0.3);
+		}
+		
+		#sidebar .toggle-btn{
+			position:absolute;
+			left:230px;
+			top:20px;
+		}
+		
+		#sidebar .toggle-btn span {
+			display:block;
+			width:30px;
+			height:5px;
+			background:#151719;
+			margin:5px 0px;
+		}
+		
+	</style>
+	
+	
+	<script language="JavaScript" type="text/JavaScript">
+		function toggleSidebar()
+		{
+			document.getElementById("sidebar").classList.toggle("active");
+		}
+		
+		function validateEmail(emailField)
+		{
+			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+			if (reg.test(emailField.value) == false) 
+			{
+				document.getElementById("email_error").innerHTML="<span style='color: red;'> invalid Email address</span>";
+													  
+				return false;
+			}
+
+			return true;
+		}
+		
+		function checkMobile(mobile)
+		{
+
+			if(mobile.value.length!=10)
+			{
+
+				document.getElementById("mobile_error").innerHTML="<span style='color: red;'> invalid Mobile number</span>";
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<div id="sidebar">
+		<div class="toggle-btn" onclick="toggleSidebar()">
+			<span> </span>
+			<span> </span>
+			<span> </span>
+			<span> </span>
+		</div>
+		
+		
+		<ul>
+			<li> <a href="AddSt.html"> Add Student  </a> </li>
+			<li> <font color="blue"> Update Student </font> </li>
+			<li> <a href="ViewSt.php"> View Students </a> </li>
+			<li> <a href="index.html"> Logout </a> </li>
+		</ul>
+	
+	</div>
+	
+	<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Update Student</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Update Student</h1>
+	  
+      <form action="UpdateSt.php" method="POST">
+        
+		<div class="txt_field">
+          <input type="text" name="StId" required>
+          <span></span>
+          <label>Student ID</label>
+        </div>
+	  
+        <div class="txt_field">
+          <input type="text" name="Name" >
+          <span></span>
+          <label>Name</label>
+        </div>
+		
+		<div class="txt_field">
+          <input type="text" name="Address">
+          <span></span>
+          <label>Address</label>
+        </div>
+		
+		<div  class="txt_field">
+          <input type="text" name="Email" onblur="validateEmail(this);" required>
+		  <div id="email_error"></div>
+          <span></span>
+          <label>Email</label>
+        </div>
+		
+		<div class="txt_field">
+          <input type="text" name="Mobile" title="Error Message"  maxlength="10" onblur="checkMobile(this);" required >
+		  <div id="mobile_error"></div>
+          <span></span>
+          <label>Mobile</label>
+        </div>
+		
+        <div class="txt_field">
+          <input type="text" name="Age" maxlength="3" required>
+          <span></span>
+          <label>Age</label>
+        </div>
+        
+        <input type="submit" value="Update">
+		
+        
+      </form>
+    </div>
+
+  </body>
+</html>
+
+	
+	
+
+</body>
+</html>
